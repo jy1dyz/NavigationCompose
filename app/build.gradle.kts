@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
@@ -62,6 +64,8 @@ dependencies {
     implementation(libs.navigation)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+    implementation(libs.serialization)
+    implementation(libs.bundles.koin.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

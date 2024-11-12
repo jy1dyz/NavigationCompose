@@ -18,10 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeScreen(navController: NavController) {
-    val viewModel = remember { MainVM() }
+fun HomeScreen() {
+    val viewModel = koinViewModel<HomeVM>()
     var isLoading by remember { mutableStateOf(false) }
 
     Column(
@@ -34,7 +35,7 @@ fun HomeScreen(navController: NavController) {
         } else {
             Button(onClick = {
                 isLoading = true
-                viewModel.loadDataAndNavigate(navController, "42")
+                viewModel.loadDataAndNavigate("470")
             }) {
                 Text("Load Data and Go to Details")
             }
@@ -44,15 +45,18 @@ fun HomeScreen(navController: NavController) {
 
 
 @Composable
-fun DetailScreen(navController: NavController, itemId: String?) {
+fun DetailScreen(itemId: String?) {
+    val viewModel = koinViewModel<DetailVM>()
     Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(text = "Details Screen for item ID: $itemId")
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { navController.popBackStack() }) {
+        Button(onClick = { viewModel.navigateUp() }) {
             Text("Go Back")
         }
     }
