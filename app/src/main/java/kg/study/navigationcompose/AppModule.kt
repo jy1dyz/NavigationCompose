@@ -5,7 +5,7 @@ import org.koin.dsl.module
 
 val appModule = module {
     single<Navigator> {
-        DefaultNavigator(destination = Destination.HomeScreen)
+        DefaultNavigator(destination = Destination.HomeGraph)
     }
 
     viewModelOf(::HomeVM)

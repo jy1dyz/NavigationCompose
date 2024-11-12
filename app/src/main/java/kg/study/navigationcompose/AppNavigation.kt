@@ -20,15 +20,15 @@ fun AppNavigation() {
         }
     }
     NavHost(navController = navController, startDestination = navigator.destination) {
+        navigation<Destination.HomeGraph>(startDestination = Destination.HomeScreen) {
+            composable<Destination.HomeScreen> {
+                HomeScreen()
+            }
 
-        composable<Destination.HomeScreen> {
-            HomeScreen()
+            composable<Destination.DetailScreen> { backStackEntry ->
+                val args = backStackEntry.toRoute<Destination.DetailScreen>()
+                DetailScreen(args.itemId)
+            }
         }
-
-        composable<Destination.DetailScreen> { backStackEntry ->
-            val args = backStackEntry.toRoute<Destination.DetailScreen>()
-            DetailScreen(args.itemId)
-        }
-
     }
 }
