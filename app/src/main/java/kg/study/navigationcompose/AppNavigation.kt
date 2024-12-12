@@ -14,7 +14,7 @@ fun AppNavigation() {
     val navigator = koinInject<Navigator>()
 
     ObserveAsEvents(flow = navigator.navigationActions) { action ->
-        when(action) {
+        when (action) {
             is NavigationAction.Navigate -> navController.navigate(action.destination)
             is NavigationAction.NavigateUp -> navController.navigateUp()
         }
@@ -28,6 +28,10 @@ fun AppNavigation() {
             composable<Destination.DetailScreen> { backStackEntry ->
                 val args = backStackEntry.toRoute<Destination.DetailScreen>()
                 DetailScreen(args.itemId)
+            }
+
+            composable<Destination.ViewFragmentScreen> {
+                OpenViewFragment()
             }
         }
     }

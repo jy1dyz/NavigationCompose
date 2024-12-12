@@ -12,7 +12,6 @@ class App: Application() {
         startKoin {
             androidContext(this@App)
             androidLogger()
-
             modules(appModule)
         }
     }

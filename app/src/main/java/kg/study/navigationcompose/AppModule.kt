@@ -10,4 +10,5 @@ val appModule = module {
 
     viewModelOf(::HomeVM)
     viewModelOf(::DetailVM)
+    viewModelOf(::ViewViewModel)
 }

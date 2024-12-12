@@ -12,4 +12,7 @@ sealed interface Destination {
 
     @Serializable
     data class DetailScreen(val itemId: String?): Destination
+
+    @Serializable
+    data object ViewFragmentScreen: Destination
 }

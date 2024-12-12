@@ -25,4 +25,10 @@ class DetailVM(private val navigator: Navigator): ViewModel() {
             navigator.navigateUp()
         }
     }
+
+    fun openViewFragment() {
+        viewModelScope.launch {
+            navigator.navigate(destination = Destination.ViewFragmentScreen)
+        }
+    }
 }
